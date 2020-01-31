@@ -1,0 +1,15 @@
+.container
+{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    background-color: green;
+}
+
+
+.boutons a:hover 
+{
+  background-color: #ddd;
+  color: black;
+}
+
