@@ -24,6 +24,8 @@ CREATE TABLE Utilisateur
 	dateNaissance DATE,
 	email VARCHAR (64),
 	avatar VARCHAR (64),
+	idUtilisateur INT,
+	idDiscussion INT,
 	PRIMARY KEY (idUtilisateur)
 );
 
@@ -42,6 +44,8 @@ CREATE TABLE Discussion
 (
 	idDiscussion INT AUTO_INCREMENT NOT NULL,
 	sujet VARCHAR (64),
+	idAdmin INT,
+	idForum INT,
 	PRIMARY KEY (idDiscussion)
 );
 
@@ -80,6 +84,32 @@ CREATE TABLE AdminDiscussion
 	idDiscussion INT NOT NULL,
 	PRIMARY KEY (idAdmin, idDiscussion)
 );
+
+ALTER TABLE Message
+ADD CONSTRAINT Message_idUtilisateur
+FOREIGN KEY (idUtilisateur)
+REFERENCES Utilisateur(idUtilisateur);
+
+ALTER TABLE Discussion
+ADD CONSTRAINT Discussion_idAdmin
+FOREIGN KEY (idAdmin)
+REFERENCES Administrateur(idAdmin);
+
+ALTER TABLE Discussion
+ADD CONSTRAINT Discussion_idForum
+FOREIGN KEY (idForum)
+REFERENCES Forum(idForum);
+
+ALTER TABLE Utilisateur
+ADD CONSTRAINT Utilisateur_idCompte
+FOREIGN KEY (idCompte)
+REFERENCES Compte(idCompte);
+
+ALTER TABLE Message
+ADD CONSTRAINT Message_idDiscussion
+FOREIGN KEY (idDiscussion)
+REFERENCES Discussion(idDiscussion);
+
 
 
 
