@@ -1,3 +1,10 @@
+p
+{
+    font-weight: bold;
+    font-family: system-ui;
+    color:#8B0000;
+}
+
 .page_connexion
 {
     display: flex;
@@ -12,5 +19,6 @@
     background-color: #D3D3D3;
     padding: 10px;
     display: flex;
-    font-style: 
+    justify-content: center;
+    align-items: center;
 }

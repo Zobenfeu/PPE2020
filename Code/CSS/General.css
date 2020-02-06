@@ -8,6 +8,7 @@ body, html
 h2
 {
 	color:#9370DB;
+	font-size: 30px;
 }
 
 .green_banniere
@@ -20,13 +21,13 @@ h2
 	width: 100%;
 }
 
-.container_page
+.container_page 
 {
 	height: 100%;
 	width: 50%;
 	display: flex;
-	justify-content: center;
 	align-items: center;
+	justify-content: center;
 	background-color: #3CB371;
 	margin-left: 25%;
 }

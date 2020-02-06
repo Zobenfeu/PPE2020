@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css" media="all"/>
 
     <div class="page_content">
-    	Vous devez vous connecter pour accéder au forum
+    	<p>Vous devez vous connecter pour accéder au forum</p>
 	    <div class="page_connexion">
 	        <form method="post" action="index.php" name="login_form" class="div_connexion">
 				<div class="fieldset_connexion">
