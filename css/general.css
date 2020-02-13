@@ -1,0 +1,33 @@
+body, html
+{
+	height: 100%;
+	margin: 0px;
+	background-color: #FDF5E6;
+}
+
+h2
+{
+	color:#9370DB;
+	font-size: 30px;
+}
+
+.green_banniere
+{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #DFF0D8;
+	height: 40px;
+	width: 100%;
+}
+
+.container_page 
+{
+	height: 100%;
+	width: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #3CB371;
+	margin-left: 25%;
+}
