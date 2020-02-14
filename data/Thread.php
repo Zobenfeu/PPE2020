@@ -5,7 +5,11 @@ class Thread
     private $idThread;
     private $sujet;
     private $text;
+<<<<<<< HEAD
+    private $dateParution;
+=======
     private $date;
+>>>>>>> 4149a1386a1755ba0739c13bcac1843291c94f8c
     
     public function setIdThread($idThread)
     {
@@ -40,6 +44,16 @@ class Thread
     }
     
     
+<<<<<<< HEAD
+    public function setDateParution($dateParution)
+    {
+        $this->dateParution=$dateParution;
+    }
+    
+    public function getDateParution()
+    {
+        return $dateParution;
+=======
     public function setDate($date)
     {
         $this->date=$date;
@@ -48,6 +62,7 @@ class Thread
     public function getDate()
     {
         return $date;
+>>>>>>> 4149a1386a1755ba0739c13bcac1843291c94f8c
     }
     
 }
