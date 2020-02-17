@@ -4,10 +4,6 @@
 class Commentaire
 {
     private $idCommentaire;
-<<<<<<< HEAD
-=======
-    private $pseudo;
->>>>>>> 4149a1386a1755ba0739c13bcac1843291c94f8c
     private $dateCommentaire;
     private $content;
     private $idThread;
@@ -22,22 +18,7 @@ class Commentaire
         return $this->idCommentaire;
     }
     
-<<<<<<< HEAD
 
-=======
-    
-    public function setPseudo($pseudo) 
-    {
-        $this->pseudo = $pseudo;
-    }       
-    public function getPseudo() 
-    {
-        return $this->pseudo;
-    }
-    
-    
-    
->>>>>>> 4149a1386a1755ba0739c13bcac1843291c94f8c
     public function setDateCommentaire($dateCommentaire) 
     {
         $this->dateCommentaire = $dateCommentaire;
@@ -46,7 +27,7 @@ class Commentaire
     {
         return $this->dateCommentaire;
     }
-
+    
     
     public function setContent($content) 
     {

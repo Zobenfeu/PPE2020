@@ -19,11 +19,7 @@ class ThreadManager
             $thread->setIdThread($line["idThread"]);
             $thread->setSujet($line["sujet"]);
             $thread->setText($line["text"]);
-<<<<<<< HEAD
             $thread->setDate($line["dateParution"]);
-=======
-            $thread->setDate($line["date"]);
->>>>>>> 4149a1386a1755ba0739c13bcac1843291c94f8c
         }
         return $thread;
     }
@@ -45,17 +41,12 @@ class ThreadManager
             $thread->setIdThread($line["idThread"]);
             $thread->setSujet($line["sujet"]);
             $thread->setText($line["text"]);
-<<<<<<< HEAD
             $thread->setDate($line["dateParution"]);
-=======
-            $thread->setDate($line["date"]);
->>>>>>> 4149a1386a1755ba0739c13bcac1843291c94f8c
-            
+
             $tabThread [] = $thread;
         }
         return $tabThread;
     }
-<<<<<<< HEAD
     
     //ADMIN et Utilisateur quand c'est le leur
     public static function deleteThread($idThread)
@@ -94,6 +85,4 @@ class ThreadManager
         $state->bindParam(5, $thread->getIdThread);
         $state->execute();        
     }
-=======
->>>>>>> 4149a1386a1755ba0739c13bcac1843291c94f8c
 }

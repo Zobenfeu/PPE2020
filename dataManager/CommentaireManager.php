@@ -16,10 +16,6 @@ class CommentaireManager
         foreach($resultats as $lineResult)
         {
             $com->setIdCommentaire($lineResult["idCommentaire"]);
-<<<<<<< HEAD
-=======
-            $com->setPseudo($lineResult["pseudo"]);
->>>>>>> 4149a1386a1755ba0739c13bcac1843291c94f8c
             $com->setDateCommentaire($lineResult["dateCommentaire"]);
             $com->setContent($lineResult["content"]);
             $com->setIdArticle($lineResult["idArticle"]);
@@ -42,10 +38,6 @@ class CommentaireManager
         {
             $com = new Commentaire();
             $com->setIdCommentaire($lineResult["idCommentaire"]);
-<<<<<<< HEAD
-=======
-            $com->setPseudo($lineResult["pseudo"]);
->>>>>>> 4149a1386a1755ba0739c13bcac1843291c94f8c
             $com->setDateCommentaire($lineResult["dateCommentaire"]);
             $com->setContent($lineResult["content"]);
             $com->setIdArticle($lineResult["idArticle"]);
@@ -68,7 +60,6 @@ class CommentaireManager
     {
         $bdd= DataBaseLinker::getConnexion();
         
-<<<<<<< HEAD
         $state = $bdd->prepare("INSERT INTO Commentaire (idCommentaire, dateCommentaire, content, idThread) VALUES (?,?,?,?)");
         $state->bindParam(1, $com->getIdCommentaire);
         $state->bindParam(2, $com->getDateCommentaire);
@@ -90,20 +81,6 @@ class CommentaireManager
         $state->bindParam(4, $com->getIdThread);
         $state->bindParam(5, $com->getIdCommentaire);
         $state->execute();        
-=======
-        $state = $bdd->prepare("INSERT INTO Commentaire (idClient, pseudo, dateCommentaire, content, idThread) VALUES (?,?,?,?,?)");
-        $state->bindParam(1, $com->getIdCommentaire);
-        $state->bindParam(2, $com->getPseudo);
-        $state->bindParam(3, $com->getDateCommentaire);
-        $state->bindParam(4, $com->getContent);
-        $state->bindParam(5, $com->getIdThread);
-        $state->execute();
-        $id=$bdd->lastInsertId();
-        foreach($id as $line)
-        {
-           // $idComGenere = $id->getInt(1);
         }
->>>>>>> 4149a1386a1755ba0739c13bcac1843291c94f8c
-    }
     
 }
