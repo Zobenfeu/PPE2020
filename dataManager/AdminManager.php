@@ -99,4 +99,19 @@ class AdminManager
         $state->bindParam(9, $admin->getIdAdmin);
         $state->execute();       
     }
+    
+    public static function testIdentifiants($username, $password)
+    {
+        $loginUser = "MatteoJames";
+        $passwordUser = "Brexit2020";
+        
+        $codeRetour = false;
+        
+        if ($username == $loginUser && $password == $passwordUser)
+        {
+            $codeRetour = true;
+        }
+            
+        return $codeRetour;
+    }
 }

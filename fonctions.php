@@ -1,13 +1,13 @@
 <?php
 
-    function testIdentifiants($login, $password)
+    function testIdentifiants($username, $password)
     {
         $loginUser = "MatteoJames";
         $passwordUser = "Brexit2020";
         
         $codeRetour = false;
         
-        if ($login == $loginUser && $password == $passwordUser)
+        if ($username == $loginUser && $password == $passwordUser)
         {
             $codeRetour = true;
         }

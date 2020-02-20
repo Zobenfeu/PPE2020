@@ -9,7 +9,9 @@
     <body>
 
 <div class="green_banniere">
+
 	<h2>FORUM PPE</h2>
+
 </div>
 
 	<div class="container_page">

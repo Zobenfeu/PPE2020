@@ -6,7 +6,7 @@ CREATE TABLE Commentaire
     idCommentaire INT AUTO_INCREMENT NOT NULL,
     content VARCHAR(64),
     dateCommentaire DATE,
-    pseudo VARCHAR(64),
+    idUser int (11),
     idThread INT,
     PRIMARY KEY(idCommentaire)
 );
@@ -23,7 +23,7 @@ CREATE TABLE User
     mdpUser VARCHAR(64),
     ban TINYINT,
     idCommentaire INT,
-    PRIMARY KEY(idUtilisateur),
+    PRIMARY KEY(idUser),
 );
 
 CREATE TABLE Admin
@@ -45,7 +45,6 @@ CREATE TABLE Thread
     sujet VARCHAR(64) NOT NULL,
     text TEXT NOT NULL,
     dateParution DATE,
-    idCommentaire INT NOT NULL,
     PRIMARY KEY(idThread)
 );
 
@@ -82,10 +81,10 @@ ADD CONSTRAINT User_idCommentaire
 FOREIGN KEY(idCommentaire)
 REFERENCES Commentaire(idCommentaire);
 
-ALTER TABLE Thread
-ADD CONSTRAINT Thread_idCommentaire
-FOREIGN KEY(idCommentaire)
-REFERENCES Commentaire(idCommentaire);
+ALTER TABLE Commentaire
+ADD CONSTRAINT Commentaire_idThread
+FOREIGN KEY(idThread)
+REFERENCES Thread (idThread);
 
 ALTER TABLE AdminCommentaire
 ADD CONSTRAINT AdminCommentaire_idAdmin
@@ -126,3 +125,8 @@ ALTER TABLE UserThread
 ADD CONSTRAINT UserThread_idThread
 FOREIGN KEY(idThread)
 REFERENCES Thread(idThread);
+
+ALTER TABLE Commentaire 
+ADD CONSTRAINT Commentaire_idUser
+FOREIGN KEY(idUser)
+REFERENCES User(idUser);

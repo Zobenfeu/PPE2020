@@ -2,6 +2,7 @@
 
 class User
 {
+    private $idUser;
     private $nomUser;
     private $prenomUser;
     private $pseudoUser;
@@ -10,8 +11,25 @@ class User
     private $emailUser;
     private $cheminAvatarUser;
     private $ban;
+    private $idCommentaire;
     
-    function getNomUser() {
+    function getIdUser() {
+        return $this->idUser;
+    }
+
+    function getIdCommentaire() {
+        return $this->idCommentaire;
+    }
+
+    function setIdUser($idUser) {
+        $this->idUser = $idUser;
+    }
+
+    function setIdCommentaire($idCommentaire) {
+        $this->idCommentaire = $idCommentaire;
+    }
+
+        function getNomUser() {
         return $this->nomUser;
     }
 
@@ -74,8 +92,4 @@ class User
     function setBan($ban) {
         $this->ban = $ban;
     }
-
-
-
-
 }

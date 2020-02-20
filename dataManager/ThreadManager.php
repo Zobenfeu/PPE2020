@@ -48,7 +48,7 @@ class ThreadManager
         return $tabThread;
     }
     
-    //ADMIN et Utilisateur quand c'est le leur
+    //ADMIN et Utilisateur (quand c'est le leur)
     public static function deleteThread($idThread)
     {
         $bdd= DataBaseLinker::getConnexion();
@@ -70,7 +70,7 @@ class ThreadManager
         $state->bindParam(4, $thread->getDateParution);
         $state->execute();  
         $idThreadGenere = $bdd->lastInsertId();
-        $thread->setIdThread($idThread);        
+        $thread->setIdThread($idThreadGenere);        
     }
     
     //Utilisateur et Admin

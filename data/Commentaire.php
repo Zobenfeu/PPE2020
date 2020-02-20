@@ -6,10 +6,18 @@ class Commentaire
     private $idCommentaire;
     private $dateCommentaire;
     private $content;
+    private $idUser;
     private $idThread;
 
-    
-    public function setIdCommentaire($idCommentaire) 
+    function getIdUser() {
+        return $this->idUser;
+    }
+
+    function setIdUser($idUser) {
+        $this->idUser = $idUser;
+    }
+
+        public function setIdCommentaire($idCommentaire) 
     {
         $this->idCommentaire = $idCommentaire;
     }

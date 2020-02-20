@@ -18,7 +18,8 @@ class CommentaireManager
             $com->setIdCommentaire($lineResult["idCommentaire"]);
             $com->setDateCommentaire($lineResult["dateCommentaire"]);
             $com->setContent($lineResult["content"]);
-            $com->setIdArticle($lineResult["idArticle"]);
+            $com->setIdUser($lineResult["idUser"]);
+            $com->setIdThread($lineResult["idThread"]);
         }
         return $com;
     }
@@ -40,12 +41,14 @@ class CommentaireManager
             $com->setIdCommentaire($lineResult["idCommentaire"]);
             $com->setDateCommentaire($lineResult["dateCommentaire"]);
             $com->setContent($lineResult["content"]);
-            $com->setIdArticle($lineResult["idArticle"]);
+            $com->setIdUser($lineResult["idUser"]);
+            $com->setIdThread($lineResult["idThread"]);
 
             $tabCom [] = $com;
         }
         return $tabCom;
     }
+    
     
     public static function deleteCommentaire($idCommentaire)
     {
@@ -60,11 +63,12 @@ class CommentaireManager
     {
         $bdd= DataBaseLinker::getConnexion();
         
-        $state = $bdd->prepare("INSERT INTO Commentaire (idCommentaire, dateCommentaire, content, idThread) VALUES (?,?,?,?)");
+        $state = $bdd->prepare("INSERT INTO Commentaire (idCommentaire, dateCommentaire, content, idUser, idThread) VALUES (?,?,?,?,?)");
         $state->bindParam(1, $com->getIdCommentaire);
         $state->bindParam(2, $com->getDateCommentaire);
         $state->bindParam(3, $com->getContent);
         $state->bindParam(4, $com->getIdThread);
+        $state->bindParam(5, $com->getIdUser);
         $state->execute();  
         $idComGenere = $bdd->lastInsertId();
         $com->setIdCommentaire($idComGenere);
@@ -74,13 +78,14 @@ class CommentaireManager
     public static function updateCommentaire ($com)
     {
         $bdd= DataBaseLinker::getConnexion();
-        $state = $bdd->prepare("UPDATE Commentaire SET idCommentaire = ?, dateCommentaire = ?, content = ?, idThread = ? WHERE idCommentaire = ?");
+        $state = $bdd->prepare("UPDATE Commentaire SET idCommentaire = ?, dateCommentaire = ?, content = ?, idUser = ? , idThread = ? WHERE idCommentaire = ?");
         $state->bindParam(1, $com->getIdCommentaire);
         $state->bindParam(2, $com->getDateCommentaire);
         $state->bindParam(3, $com->getContent);
         $state->bindParam(4, $com->getIdThread);
-        $state->bindParam(5, $com->getIdCommentaire);
+        $state->bindParam(5, $com->getIdUser);
+        $state->bindParam(6, $com->getIdCommentaire);
         $state->execute();        
-        }
+    }
     
 }
