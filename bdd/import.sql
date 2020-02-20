@@ -1,145 +1,128 @@
-DROP DATABASE IF EXISTS MCDPPE;
 CREATE DATABASE MCDPPE;
 USE MCDPPE;
 
-CREATE TABLE Compte
+CREATE TABLE Commentaire
 (
-	idCompte INT AUTO_INCREMENT NOT NULL,
-	PRIMARY KEY (idCompte)
+    idCommentaire INT AUTO_INCREMENT NOT NULL,
+    content VARCHAR(64),
+    dateCommentaire DATE,
+    pseudo VARCHAR(64),
+    idThread INT,
+    PRIMARY KEY(idCommentaire)
 );
 
-CREATE TABLE Message
+CREATE TABLE User
 (
-	idMessage INT AUTO_INCREMENT NOT NULL,
-	contenu VARCHAR (64),
-	dateEnvoi DATE,
-	PRIMARY KEY (idMessage)
+    idUser INT AUTO_INCREMENT NOT NULL,
+    nomUser VARCHAR(64),
+    prenomUser VARCHAR(64),
+    pseudoUser VARCHAR(64),
+    dateNaissanceUser DATE,
+    emailUser VARCHAR(64),
+    cheminAvatarUser VARCHAR(64),
+    mdpUser VARCHAR(64),
+    ban TINYINT,
+    idCommentaire INT,
+    PRIMARY KEY(idUtilisateur),
 );
 
-CREATE TABLE Utilisateur
+CREATE TABLE Admin
 (
-	idUtilisateur INT AUTO_INCREMENT NOT NULL,
-	nom VARCHAR (64),
-	prenom VARCHAR (64),
-	pseudo VARCHAR (64),
-	dateNaissance DATE,
-	email VARCHAR (64),
-	avatar VARCHAR (64),
-	idUtilisateur INT,
-	idDiscussion INT,
-	PRIMARY KEY (idUtilisateur)
+    idAdmin INT AUTO_INCREMENT NOT NULL,
+    nomAdmin VARCHAR(64),
+    prenomAdmin VARCHAR(64),
+    dateNaissanceAdmin DATE,
+    emailAdmin VARCHAR(64),
+    pseudoAdmin VARCHAR(64),
+    mdpAdmin VARCHAR(64),
+    cheminAvatarAdmin VARCHAR(64),
+    PRIMARY KEY(idAdmin)
 );
 
-CREATE TABLE Administrateur
+CREATE TABLE Thread 
 (
-	idAdmin INT AUTO_INCREMENT NOT NULL,
-	nom VARCHAR (64),
-	prenom VARCHAR (64),
-	dateNaissance DATE,
-	email VARCHAR (64),
-	pseudo VARCHAR (64),
-	PRIMARY KEY (idAdmin)
+    idThread INT AUTO_INCREMENT NOT NULL,
+    sujet VARCHAR(64) NOT NULL,
+    text TEXT NOT NULL,
+    dateParution DATE,
+    idCommentaire INT NOT NULL,
+    PRIMARY KEY(idThread)
 );
 
-CREATE TABLE Discussion
+CREATE TABLE AdminCommentaire /*Supprimer*/
 (
-	idDiscussion INT AUTO_INCREMENT NOT NULL,
-	sujet VARCHAR (64),
-	idAdmin INT,
-	idForum INT,
-	PRIMARY KEY (idDiscussion)
+    idAdmin INT NOT NULL,
+    idCommentaire INT NOT NULL,
+    PRIMARY KEY(idAdmin, idCommentaire)
 );
 
-CREATE TABLE Forum
+CREATE TABLE AdminUser /*Ban/deban*/
 (
-	idForum INT AUTO_INCREMENT NOT NULL,
-	nom VARCHAR (64),
-	dateCreation DATE,
-	PRIMARY KEY (idForum)
+    idAdmin INT NOT NULL,
+    idUser INT NOT NULL,
+    PRIMARY KEY(idAdmin, idUtilisateur)
 );
 
-CREATE TABLE AdminMessage
+CREATE TABLE AdminThread /*Ouvrir/fermer*/
 (
-	idAdmin INT NOT NULL,
-	idMessage INT NOT NULL,
-	PRIMARY KEY (idAdmin, idMessage)
+    idAdmin INT NOT NULL,
+    idThread INT NOT NULL,
+    PRIMARY KEY(idAdmin, idThread)
 );
 
-CREATE TABLE AdminUtilisateur
+CREATE TABLE UserThread /*Participer*/
 (
-	idAdmin INT NOT NULL,
-	idUtilisateur INT NOT NULL,
-	PRIMARY KEY (idAdmin, idUtilisateur)
+    idUser INT NOT NULL,
+    idThread INT NOT NULL,
+    PRIMARY KEY(idUtilisateur, idThread)
 );
 
-CREATE TABLE UtilisateurDiscussion
-(
-	idUtilisateur INT NOT NULL,
-	idDiscussion INT NOT NULL,
-	PRIMARY KEY (idUtilisateur, idDiscussion)
-);
+ALTER TABLE User
+ADD CONSTRAINT User_idCommentaire
+FOREIGN KEY(idCommentaire)
+REFERENCES Commentaire(idCommentaire);
 
-CREATE TABLE AdminDiscussion
-(
-	idAdmin INT NOT NULL,
-	idDiscussion INT NOT NULL,
-	PRIMARY KEY (idAdmin, idDiscussion)
-);
+ALTER TABLE Thread
+ADD CONSTRAINT Thread_idCommentaire
+FOREIGN KEY(idCommentaire)
+REFERENCES Commentaire(idCommentaire);
 
-ALTER TABLE Message
-ADD CONSTRAINT Message_idUtilisateur
-FOREIGN KEY (idUtilisateur)
-REFERENCES Utilisateur(idUtilisateur);
+ALTER TABLE AdminCommentaire
+ADD CONSTRAINT AdminCommentaire_idAdmin
+FOREIGN KEY(idAdmin)
+REFERENCES Admin(idAdmin);
 
-ALTER TABLE Discussion
-ADD CONSTRAINT Discussion_idAdmin
-FOREIGN KEY (idAdmin)
-REFERENCES Administrateur(idAdmin);
+ALTER TABLE AdminCommentaire
+ADD CONSTRAINT AdminCommentaire_idCommentaire
+FOREIGN KEY(idCommentaire)
+REFERENCES Commentaire(idCommentaire);
 
-ALTER TABLE Discussion
-ADD CONSTRAINT Discussion_idForum
-FOREIGN KEY (idForum)
-REFERENCES Forum(idForum);
+ALTER TABLE AdminUser
+ADD CONSTRAINT AdminUser_idAdmin
+FOREIGN KEY(idAdmin)
+REFERENCES Admin(idAdmin);
 
-ALTER TABLE Utilisateur
-ADD CONSTRAINT Utilisateur_idCompte
-FOREIGN KEY (idCompte)
-REFERENCES Compte(idCompte);
+ALTER TABLE AdminUser
+ADD CONSTRAINT AdminUser_idUser
+FOREIGN KEY(idUser)
+REFERENCES User(idUser);
 
-ALTER TABLE Message
-ADD CONSTRAINT Message_idDiscussion
-FOREIGN KEY (idDiscussion)
-REFERENCES Discussion(idDiscussion);
+ALTER TABLE AdminThread
+ADD CONSTRAINT AdminThread_idAdmin
+FOREIGN KEY(idAdmin)
+REFERENCES Admin(idAdmin);
 
+ALTER TABLE AdminThread
+ADD CONSTRAINT AdminThread_idThread
+FOREIGN KEY(idThread)
+REFERENCES Thread(idThread);
 
+ALTER TABLE UserThread
+ADD CONSTRAINT UserThread_idUser
+FOREIGN KEY(idUser)
+REFERENCES User(idUser);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ALTER TABLE UserThread
+ADD CONSTRAINT UserThread_idThread
+FOREIGN KEY(idThread)
+REFERENCES Thread(idThread);

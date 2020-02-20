@@ -1,3 +1,4 @@
+        <link rel="stylesheet" type="text/css" href="css/admin.css" media="all" />
 <?php 
 
 	session_name("ppe_session");
@@ -11,7 +12,11 @@
 		exit;
 	}
 ?>
-	<link rel="stylesheet" type="text/css" href="css/admin.css" media="all" />
-
-
-
+	
+        <div class ="boutonConnect">
+            <a href="vosSujet.php"> <input type="submit" value="Connection Forum" />
+        </div>
+        
+<?php
+    include("footer.php");
+?>
