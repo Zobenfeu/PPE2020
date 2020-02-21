@@ -3,12 +3,8 @@
 class User
 {
     private $idUser;
-    private $nom;
-    private $prenom;
     private $pseudo;
     private $mdp;
-    private $dateNaissance;
-    private $email;
     private $cheminAvatar;
     private $ban;
     private $admin;
@@ -17,13 +13,9 @@ class User
     function getIdUser() {
         return $this->idUser;
     }
-
-    function getNom() {
-        return $this->nom;
-    }
-
-    function getPrenom() {
-        return $this->prenom;
+    
+    function setIdUser($idUser) {
+        $this->idUser = $idUser;
     }
 
     function getPseudo() {
@@ -32,14 +24,6 @@ class User
 
     function getMdp() {
         return $this->mdp;
-    }
-
-    function getDateNaissance() {
-        return $this->dateNaissance;
-    }
-
-    function getEmail() {
-        return $this->email;
     }
 
     function getCheminAvatar() {
@@ -54,32 +38,12 @@ class User
         return $this->admin;
     }
 
-    function setIdUser($idUser) {
-        $this->idUser = $idUser;
-    }
-
-    function setNom($nom) {
-        $this->nom = $nom;
-    }
-
-    function setPrenom($prenom) {
-        $this->prenom = $prenom;
-    }
-
     function setPseudo($pseudo) {
         $this->pseudo = $pseudo;
     }
 
     function setMdp($mdp) {
         $this->mdp = $mdp;
-    }
-
-    function setDateNaissance($dateNaissance) {
-        $this->dateNaissance = $dateNaissance;
-    }
-
-    function setEmail($email) {
-        $this->email = $email;
     }
 
     function setCheminAvatar($cheminAvatar) {

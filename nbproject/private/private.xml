@@ -3,14 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/UwAmp/www/PPE2020/fonctions.php</file>
-            <file>file:/C:/UwAmp/www/PPE2020/dataManager/AdminManager.php</file>
-            <file>file:/C:/UwAmp/www/PPE2020/data/User.php</file>
-            <file>file:/C:/UwAmp/www/PPE2020/data/Admin.php</file>
-            <file>file:/C:/UwAmp/www/PPE2020/css/index.css</file>
+            <file>file:/C:/UwAmp/www/PPE2020/data/Thread.php</file>
             <file>file:/C:/UwAmp/www/PPE2020/dataManager/UserManager.php</file>
+            <file>file:/C:/UwAmp/www/PPE2020/dataManager/DataBaseLinker.php</file>
+            <file>file:/C:/UwAmp/www/PPE2020/dataManager/ThreadManager.php</file>
+            <file>file:/C:/UwAmp/www/PPE2020/header.php</file>
+            <file>file:/C:/UwAmp/www/PPE2020/dataManager/CommentaireManager.php</file>
             <file>file:/C:/UwAmp/www/PPE2020/login.php</file>
+            <file>file:/C:/UwAmp/www/PPE2020/register.php</file>
             <file>file:/C:/UwAmp/www/PPE2020/index.php</file>
+            <file>file:/C:/UwAmp/www/PPE2020/data/User.php</file>
+            <file>file:/C:/UwAmp/www/PPE2020/footer.php</file>
+            <file>file:/C:/UwAmp/www/PPE2020/data/Commentaire.php</file>
+            <file>file:/C:/UwAmp/www/PPE2020/bdd/import.sql</file>
         </group>
     </open-files>
 </project-private>

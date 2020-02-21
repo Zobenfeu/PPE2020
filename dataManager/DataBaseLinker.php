@@ -2,7 +2,7 @@
 
 class DataBaseLinker
 	{
-		private static $_url = "mysql:host=localhost;dbname=MCDPPE;charset=utf8";
+		private static $_url = "mysql:host=localhost;dbname=mcdppe;charset=utf8";
 		private static $_user = "root";
 		private static $_password = "root";
 		private static $_stockConnexionPDO;

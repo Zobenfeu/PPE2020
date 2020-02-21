@@ -11,19 +11,15 @@ CREATE TABLE Commentaire
     PRIMARY KEY(idCommentaire)
 );
 
-CREATE TABLE User
+CREATE TABLE Utilisateur
 (
     idUser INT AUTO_INCREMENT NOT NULL,
-    nomUser VARCHAR(64),
-    prenomUser VARCHAR(64),
-    pseudoUser VARCHAR(64),
-    dateNaissanceUser DATE,
-    emailUser VARCHAR(64),
-    cheminAvatarUser VARCHAR(64),
-    mdpUser VARCHAR(64),
+    pseudo VARCHAR(64),
+    cheminAvatar VARCHAR(64),
+    mdp VARCHAR(64),
     ban TINYINT,
     admin TINYINT,
-    PRIMARY KEY(idUser),
+    PRIMARY KEY(idUser)
 );
 
 CREATE TABLE Thread 
@@ -39,7 +35,7 @@ CREATE TABLE UserThread /*Participer*/
 (
     idUser INT NOT NULL,
     idThread INT NOT NULL,
-    PRIMARY KEY(idUtilisateur, idThread)
+    PRIMARY KEY(idUser, idThread)
 );
 
 ALTER TABLE Commentaire
@@ -50,7 +46,7 @@ REFERENCES Thread (idThread);
 ALTER TABLE UserThread
 ADD CONSTRAINT UserThread_idUser
 FOREIGN KEY(idUser)
-REFERENCES User(idUser);
+REFERENCES Utilisateur(idUser);
 
 ALTER TABLE UserThread
 ADD CONSTRAINT UserThread_idThread
@@ -61,3 +57,9 @@ ALTER TABLE Commentaire
 ADD CONSTRAINT Commentaire_idUser
 FOREIGN KEY(idUser)
 REFERENCES User(idUser);
+
+INSERT INTO Utilisateur(idUser, pseudo, cheminAvatar, mdp, ban, admin)
+VALUES(1, "idram", "cheminAvatar", "motdepasse", 0, 0);
+
+INSERT INTO Utilisateur(idUser, pseudo, cheminAvatar, mdp, ban, admin)
+VALUES(2, "cortana", "cheminAv", "azerty", 0, 1);

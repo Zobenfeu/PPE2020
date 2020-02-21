@@ -6,20 +6,16 @@ class UserManager
     {
         $bdd = DataBaseLinker::getConnexion();
 
-        $state=$bdd->prepare("SELECT * FROM User WHERE idUser=?");
+        $state=$bdd->prepare("SELECT * FROM Utilisateur WHERE idUtilisateur=?");
         $state->bindParam(1, $idUser);
         $state->execute();
         $resultats = $state->fetchAll();
         $user = new User();
         foreach($resultats as $lineResult)
         {
-            $user->setIdUser($lineResult["idUser"]);
-            $user->setNom($lineResult["nom"]);
-            $user->setPrenom($lineResult["prenom"]);
+            $user->setIdUser($lineResult["idUtilisateur"]);
             $user->setPseudo($lineResult["pseudo"]);
             $user->setMdp($lineResult["mdp"]);
-            $user->setDateNaissance($lineResult["dateNaissance"]);
-            $user->setEmail($lineResult["email"]);
             $user->setCheminAvatar($lineResult["cheminAvatar"]);
             $user->setBan($lineResult["ban"]);
             $user->setAdmin($lineResult["admin"]);
@@ -33,7 +29,7 @@ class UserManager
 
         $bdd = DataBaseLinker::getConnexion();
 
-        $state=$bdd->prepare("SELECT * FROM User");
+        $state=$bdd->prepare("SELECT * FROM Utilisateur");
 
         $state->execute();
         $resultats = $state->fetchAll();
@@ -41,13 +37,9 @@ class UserManager
         foreach($resultats as $lineResult)
         {
             $user = new User();
-            $user->setIdUser($lineResult["idUser"]);
-            $user->setNom($lineResult["nomUser"]);
-            $user->setPrenom($lineResult["prenom"]);
+            $user->setIdUser($lineResult["idUtilisateur"]);
             $user->setPseudo($lineResult["pseudo"]);
             $user->setMdp($lineResult["mdp"]);
-            $user->setDateNaissance($lineResult["dateNaissance"]);
-            $user->setEmail($lineResult["email"]);
             $user->setCheminAvatar($lineResult["cheminAvatar"]);
             $user->setBan($lineResult["ban"]);
             $user->setAdmin($lineResult["admin"]);
@@ -61,7 +53,7 @@ class UserManager
     {
         $bdd= DataBaseLinker::getConnexion();
         
-        $state = $bdd->prepare("DELETE FROM User WHERE idUser = ?");
+        $state = $bdd->prepare("DELETE FROM Utilisateur WHERE idUser = ?");
         $state->bindParam(1, $idUser);
         $state->execute();             
     }
@@ -70,29 +62,21 @@ class UserManager
     {
         $bdd= DataBaseLinker::getConnexion();
         
-        $state = $bdd->prepare("INSERT INTO User (nom, prenom, pseudo, mdp, "
-                . "dateNaissance, email, ban, admin) VALUES (?,?,?,?,?,?,?,0,0)");
-        $state->bindParam(1, $user->getNom);
-        $state->bindParam(2, $user->getPrenom);
-        $state->bindParam(3, $user->getPseudo);
-        $state->bindParam(4, $user->getMdp);
-        $state->bindParam(5, $user->getDateNaissance);
-        $state->bindParam(6, $user->getEmail);
+        $state = $bdd->prepare("INSERT INTO Utilisateur (pseudo, mdp, "
+                . "ban, admin) VALUES (?,?,0,0)");
+        $state->bindParam(1, $user->getPseudo);
+        $state->bindParam(2, $user->getMdp);
         $state->execute();          
     }
     
     public static function updateUser ($user)
     {
         $bdd= DataBaseLinker::getConnexion();
-        $state = $bdd->prepare("UPDATE User SET  nom = ?, prenom = ?, pseudo = ?, mdp = ?,"
-                        . " dateNaissance = ?, email = ? WHERE idUser = ?");
-        $state->bindParam(1, $user->getNom);
-        $state->bindParam(2, $user->getPrenom);
-        $state->bindParam(3, $user->getPseudo);
-        $state->bindParam(4, $user->getMdp);
-        $state->bindParam(5, $user->getDateNaissance);
-        $state->bindParam(6, $user->getEmail);
-        $state->bindParam(7, $user->getidUser);
+        $state = $bdd->prepare("UPDATE Utilisateur SET pseudo = ?, mdp = ?"
+                        . " WHERE idUser = ?");
+        $state->bindParam(1, $user->getPseudo);
+        $state->bindParam(2, $user->getMdp);
+        $state->bindParam(3, $user->getidUser);
         $state->execute();       
     }
     
