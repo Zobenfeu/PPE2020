@@ -1,10 +1,14 @@
 <?php 
+    session_name("ppe_session");
+    session_start();
     include("header.php");
 
     if($_SESSION["ppe_session"] == false)
     {
         header('Location: login.php');
     }
+    
+   
 ?>
 	
         <link rel="stylesheet" type="text/css" href="index.css" media="all"/>

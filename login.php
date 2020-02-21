@@ -18,7 +18,7 @@
             
             if ($codeRetourUser == true || $codeRetourAdmin==true)
             {
-                $_SESSION["login"] = $_POST["username"];
+                $_SESSION["ppe_session"] = true;
 
                 header('Location: index.php');
                 exit;
