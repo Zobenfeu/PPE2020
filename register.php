@@ -1,41 +1,13 @@
 <?php
-
     session_name("ppe_session");
     session_start();
-    
     include("header.php");
-
-    
-        //Connexion
-	if (!empty($_POST["username"]) && !empty($_POST["password"]))
-	{   
-            $codeRetour = UserManager::testIdentifiants($_POST["username"], $_POST["password"]);
-            
-            if ($codeRetour == true)
-            {
-                $_SESSION["ppe_session"] = $_POST["username"];
-
-                header('Location: index.php');
-                exit;
-            }
-            else
-            {
-                echo "<br>Identifiant ou mot de passe incorrect.";
-            }
-	}
-        
-	//Deconnexion
-	if (!empty($_GET["deco"]) && $_GET["deco"] == true)
-	{
-                session_unset();
-		session_destroy();
-	}
-
 ?>
 
-    <div class="page_content">
-    	<div class="text">
-    		<p>Connexion</p>
+        <div class="text">
+    		<p>Pas de compte ?</p>
+                <br>
+                <p>Incrivez-vous</p>
     	</div>
     	
 	    <div class="page_connexion">
@@ -60,11 +32,4 @@
                     </form>
                 
 	    </div>
-        
-	</div>
-<?php
-
-    include("footer.php");
-	
-?>
 

@@ -3,94 +3,94 @@
 class User
 {
     private $idUser;
-    private $nomUser;
-    private $prenomUser;
-    private $pseudoUser;
-    private $mdpUser;
-    private $dateNaissanceUser;
-    private $emailUser;
-    private $cheminAvatarUser;
+    private $nom;
+    private $prenom;
+    private $pseudo;
+    private $mdp;
+    private $dateNaissance;
+    private $email;
+    private $cheminAvatar;
     private $ban;
     private $admin;
+    
     
     function getIdUser() {
         return $this->idUser;
     }
-    function getAdmin() {
-        return $this->admin;
+
+    function getNom() {
+        return $this->nom;
     }
 
-    function setAdmin($admin) 
-    {
-        $this->admin = $admin;
+    function getPrenom() {
+        return $this->prenom;
+    }
+
+    function getPseudo() {
+        return $this->pseudo;
+    }
+
+    function getMdp() {
+        return $this->mdp;
+    }
+
+    function getDateNaissance() {
+        return $this->dateNaissance;
+    }
+
+    function getEmail() {
+        return $this->email;
+    }
+
+    function getCheminAvatar() {
+        return $this->cheminAvatar;
+    }
+
+    function getBan() {
+        return $this->ban;
+    }
+
+    function getAdmin() {
+        return $this->admin;
     }
 
     function setIdUser($idUser) {
         $this->idUser = $idUser;
     }
 
-
-    function getNomUser() {
-        return $this->nomUser;
+    function setNom($nom) {
+        $this->nom = $nom;
     }
 
-    function getPrenomUser() {
-        return $this->prenomUser;
+    function setPrenom($prenom) {
+        $this->prenom = $prenom;
     }
 
-    function getPseudoUser() {
-        return $this->pseudoUser;
+    function setPseudo($pseudo) {
+        $this->pseudo = $pseudo;
     }
 
-    function getMdpUser() {
-        return $this->mdpUser;
+    function setMdp($mdp) {
+        $this->mdp = $mdp;
     }
 
-    function getDateNaissanceUser() {
-        return $this->dateNaissanceUser;
+    function setDateNaissance($dateNaissance) {
+        $this->dateNaissance = $dateNaissance;
     }
 
-    function getEmailUser() {
-        return $this->emailUser;
+    function setEmail($email) {
+        $this->email = $email;
     }
 
-    function getCheminAvatarUser() {
-        return $this->cheminAvatarUser;
-    }
-
-    function setNomUser($nomUser) {
-        $this->nomUser = $nomUser;
-    }
-
-    function setPrenomUser($prenomUser) {
-        $this->prenomUser = $prenomUser;
-    }
-
-    function setPseudoUser($pseudoUser) {
-        $this->pseudoUser = $pseudoUser;
-    }
-
-    function setMdpUser($mdpUser) {
-        $this->mdpUser = $mdpUser;
-    }
-
-    function setDateNaissanceUser($dateNaissanceUser) {
-        $this->dateNaissanceUser = $dateNaissanceUser;
-    }
-
-    function setEmailUser($emailUser) {
-        $this->emailUser = $emailUser;
-    }
-
-    function setCheminAvatarUser($cheminAvatarUser) {
-        $this->cheminAvatarUser = $cheminAvatarUser;
-    }
-    
-    function getBan() {
-        return $this->ban;
+    function setCheminAvatar($cheminAvatar) {
+        $this->cheminAvatar = $cheminAvatar;
     }
 
     function setBan($ban) {
         $this->ban = $ban;
+    }
+
+    function setAdmin($admin) {
+        $this->admin = $admin;
     }
 }

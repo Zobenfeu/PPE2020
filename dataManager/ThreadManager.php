@@ -48,7 +48,6 @@ class ThreadManager
         return $tabThread;
     }
     
-    //ADMIN et Utilisateur (quand c'est le leur)
     public static function deleteThread($idThread)
     {
         $bdd= DataBaseLinker::getConnexion();
@@ -58,31 +57,23 @@ class ThreadManager
         $state->execute();             
     }
     
-    //Utilisateur et Admin
     public static function insertThread($thread)
     {
         $bdd= DataBaseLinker::getConnexion();
         
-        $state = $bdd->prepare("INSERT INTO Thread (idThread, sujet, text, dateParution) VALUES (?,?,?,?)");
-        $state->bindParam(1, $thread->getIdThread);
-        $state->bindParam(2, $thread->getSujet);
-        $state->bindParam(3, $thread->getText);
-        $state->bindParam(4, $thread->getDateParution);
-        $state->execute();  
-        $idThreadGenere = $bdd->lastInsertId();
-        $thread->setIdThread($idThreadGenere);        
+        $state = $bdd->prepare("INSERT INTO Thread (sujet, text, dateParution) VALUES (?,?,CURDATE())");
+        $state->bindParam(1, $thread->getSujet);
+        $state->bindParam(2, $thread->getText);
+        $state->execute();      
     }
     
-    //Utilisateur et Admin
     public static function updateThread ($thread)
     {
         $bdd= DataBaseLinker::getConnexion();
-        $state = $bdd->prepare("UPDATE Thread SET idThread = ?, sujet = ?, text = ?, dateParution = ? WHERE idThread = ?");
-        $state->bindParam(1, $thread->getIdThread);
-        $state->bindParam(2, $thread->getSujet);
-        $state->bindParam(3, $thread->getText);
-        $state->bindParam(4, $thread->getDateParution);
-        $state->bindParam(5, $thread->getIdThread);
+        $state = $bdd->prepare("UPDATE Thread SET sujet = ?, text = ?, dateParution = CURDATE() WHERE idThread = ?");
+        $state->bindParam(1, $thread->getSujet);
+        $state->bindParam(2, $thread->getText);
+        $state->bindParam(3, $thread->getIdThread);
         $state->execute();        
     }
 }

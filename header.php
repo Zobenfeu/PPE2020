@@ -10,7 +10,6 @@
     <body>
 <?php
     include("dataManager/UserManager.php");
-    include("dataManager/AdminManager.php");
 ?>
 <div class="green_banniere">
 
