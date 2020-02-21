@@ -23,7 +23,7 @@ class UserManager
             $user->setEmailUser($lineResult["emailUser"]);
             $user->setCheminAvatarUser($lineResult["cheminAvatarUser"]);
             $user->setBan($lineResult["ban"]);
-            $user->setIdCommentaire($lineResult["idCommentaire"]);
+            $user->setAdmin($lineResult["admin"]);
         }
         return $user;
     }
@@ -51,7 +51,7 @@ class UserManager
             $user->setEmailUser($lineResult["emailUser"]);
             $user->setCheminAvatarUser($lineResult["cheminAvatarUser"]);
             $user->setBan($lineResult["ban"]);
-            $user->setIdCommentaire($lineResult["idCommentaire"]);
+            $user->setAdmin($lineResult["admin"]);
 
             $tabUser [] = $user;
         }
@@ -71,40 +71,30 @@ class UserManager
     {
         $bdd= DataBaseLinker::getConnexion();
         
-        $state = $bdd->prepare("INSERT INTO User (idUser, nomUser, prenomUser, pseudoUser, mdpUser, "
-                . "dateNaissanceUser, emailUser, cheminAvatarUser, ban, idCommentaire) VALUES (?,?,?,?,?,?,?,?,?,?)");
-        $state->bindParam(1, $user->getIdUser);
-        $state->bindParam(2, $user->getNomUser);
-        $state->bindParam(3, $user->getPrenomUser);
-        $state->bindParam(4, $user->getPseudoUser);
-        $state->bindParam(5, $user->getMdpUser);
-        $state->bindParam(6, $user->getDateNaissanceUser);
-        $state->bindParam(7, $user->getEmailUser);
-        $state->bindParam(8, $user->getCheminAvatarUser);
-        $state->bindParam(9, $user->getBan);
-        $state->bindParam(10,$user->getIdCommentaire);
-        $state->execute();  
-        $idUserGenere = $bdd->lastInsertId();
-        $user->setIdUser($idUserGenere);
-        
+        $state = $bdd->prepare("INSERT INTO User (nomUser, prenomUser, pseudoUser, mdpUser, "
+                . "dateNaissanceUser, emailUser, cheminAvatarUser, ban, admin) VALUES (?,?,?,?,?,?,?,0,0)");
+        $state->bindParam(1, $user->getNomUser);
+        $state->bindParam(2, $user->getPrenomUser);
+        $state->bindParam(3, $user->getPseudoUser);
+        $state->bindParam(4, $user->getMdpUser);
+        $state->bindParam(5, $user->getDateNaissanceUser);
+        $state->bindParam(6, $user->getEmailUser);
+        $state->bindParam(7, $user->getCheminAvatarUser);
+        $state->execute();          
     }
     
     public static function updateUser ($user)
     {
         $bdd= DataBaseLinker::getConnexion();
-        $state = $bdd->prepare("UPDATE User SET idUser = ?, nomUser = ?, prenomUser = ?, pseudoUser = ?, mdpUser = ?,"
-                        . " dateNaissanceUser = ?, emailUser = ?, cheminAvatarUser = ?, ban = ?, idCommentaire = ? WHERE idUser = ?");
-        $state->bindParam(1, $user->getIdUser);
-        $state->bindParam(2, $user->getNomUser);
-        $state->bindParam(3, $user->getPrenomUser);
-        $state->bindParam(4, $user->getPseudoUser);
-        $state->bindParam(5, $user->getMdpUser);
-        $state->bindParam(6, $user->getDateNaissanceUser);
-        $state->bindParam(7, $user->getEmailUser);
-        $state->bindParam(8, $user->getCheminAvatarUser);
-        $state->bindParam(9, $user->getBan);
-        $state->bindParam(10, $user->getIdCommentaire);
-        $state->bindParam(11, $user->getIdUser);
+        $state = $bdd->prepare("UPDATE User SET  nomUser = ?, prenomUser = ?, pseudoUser = ?, mdpUser = ?,"
+                        . " dateNaissanceUser = ?, emailUser = ?, cheminAvatarUser = ? WHERE idUser = ?");
+        $state->bindParam(1, $user->getNomUser);
+        $state->bindParam(2, $user->getPrenomUser);
+        $state->bindParam(3, $user->getPseudoUser);
+        $state->bindParam(4, $user->getMdpUser);
+        $state->bindParam(5, $user->getDateNaissanceUser);
+        $state->bindParam(6, $user->getEmailUser);
+        $state->bindParam(7, $user->getCheminAvatarUser);
         $state->execute();       
     }
     

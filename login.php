@@ -1,24 +1,19 @@
- <link rel="stylesheet" type="text/css" href="css/login.css" media="all"/>
-
 <?php
 
     session_name("ppe_session");
     session_start();
     
     include("header.php");
-    include("fonctions.php");
-    include("dataManager/UserManager.php");
-    include("dataManager/AdminManager.php");
+
     
         //Connexion
 	if (!empty($_POST["username"]) && !empty($_POST["password"]))
 	{   
-            $codeRetourUser = UserManager::testIdentifiants($_POST["username"], $_POST["password"]);
-            $codeRetourAdmin = AdminManager::testIdentifiants($_POST["username"], $_POST["password"]);
+            $codeRetour = UserManager::testIdentifiants($_POST["username"], $_POST["password"]);
             
-            if ($codeRetourUser == true || $codeRetourAdmin==true)
+            if ($codeRetour == true)
             {
-                $_SESSION["ppe_session"] = true;
+                $_SESSION["ppe_session"] = $_POST["username"];
 
                 header('Location: index.php');
                 exit;
@@ -65,6 +60,7 @@
                     </form>
                 
 	    </div>
+        
 	</div>
 <?php
 

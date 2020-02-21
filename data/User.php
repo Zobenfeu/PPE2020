@@ -11,25 +11,26 @@ class User
     private $emailUser;
     private $cheminAvatarUser;
     private $ban;
-    private $idCommentaire;
+    private $admin;
     
     function getIdUser() {
         return $this->idUser;
     }
+    function getAdmin() {
+        return $this->admin;
+    }
 
-    function getIdCommentaire() {
-        return $this->idCommentaire;
+    function setAdmin($admin) 
+    {
+        $this->admin = $admin;
     }
 
     function setIdUser($idUser) {
         $this->idUser = $idUser;
     }
 
-    function setIdCommentaire($idCommentaire) {
-        $this->idCommentaire = $idCommentaire;
-    }
 
-        function getNomUser() {
+    function getNomUser() {
         return $this->nomUser;
     }
 

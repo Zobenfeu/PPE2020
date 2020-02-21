@@ -7,7 +7,6 @@
     {
         header('Location: login.php');
     }
-    
    
 ?>
 	
@@ -15,7 +14,7 @@
 
             <div class="container-sujet">
                 <div class="headOfSujet">
-                    <p>Vos Sujet</p>
+                    <a href="login.php?deco=true">Se déconnecter</a>
                 </div>
 
                 <div class="blockGerer">
