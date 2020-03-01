@@ -58,8 +58,6 @@ ADD CONSTRAINT Commentaire_idUser
 FOREIGN KEY(idUser)
 REFERENCES User(idUser);
 
-INSERT INTO Utilisateur(idUser, pseudo, cheminAvatar, mdp, ban, admin)
-VALUES(1, "idram", "cheminAvatar", "motdepasse", 0, 0);
-
-INSERT INTO Utilisateur(idUser, pseudo, cheminAvatar, mdp, ban, admin)
-VALUES(2, "cortana", "cheminAv", "azerty", 0, 1);
+INSERT INTO Utilisateur(idUser, pseudo, cheminAvatar, mdp, ban, admin) VALUES
+(1, "idram", "cheminAvatar", "motdepasse", 0, 0),
+(2, "cortana", "cheminAvatar", "azerty", 0, 1);

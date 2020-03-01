@@ -6,14 +6,14 @@ class UserManager
     {
         $bdd = DataBaseLinker::getConnexion();
 
-        $state=$bdd->prepare("SELECT * FROM Utilisateur WHERE idUtilisateur=?");
+        $state=$bdd->prepare("SELECT * FROM Utilisateur WHERE idUser=?");
         $state->bindParam(1, $idUser);
         $state->execute();
         $resultats = $state->fetchAll();
         $user = new User();
         foreach($resultats as $lineResult)
         {
-            $user->setIdUser($lineResult["idUtilisateur"]);
+            $user->setIdUser($lineResult["idUser"]);
             $user->setPseudo($lineResult["pseudo"]);
             $user->setMdp($lineResult["mdp"]);
             $user->setCheminAvatar($lineResult["cheminAvatar"]);
@@ -37,7 +37,7 @@ class UserManager
         foreach($resultats as $lineResult)
         {
             $user = new User();
-            $user->setIdUser($lineResult["idUtilisateur"]);
+            $user->setIdUser($lineResult["idUser"]);
             $user->setPseudo($lineResult["pseudo"]);
             $user->setMdp($lineResult["mdp"]);
             $user->setCheminAvatar($lineResult["cheminAvatar"]);
