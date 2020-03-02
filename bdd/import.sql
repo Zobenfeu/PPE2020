@@ -28,14 +28,8 @@ CREATE TABLE Thread
     sujet VARCHAR(64) NOT NULL,
     text TEXT NOT NULL,
     dateParution DATE,
-    PRIMARY KEY(idThread)
-);
-
-CREATE TABLE UserThread /*Participer*/
-(
     idUser INT NOT NULL,
-    idThread INT NOT NULL,
-    PRIMARY KEY(idUser, idThread)
+    PRIMARY KEY(idThread)
 );
 
 ALTER TABLE Commentaire
@@ -43,20 +37,15 @@ ADD CONSTRAINT Commentaire_idThread
 FOREIGN KEY(idThread)
 REFERENCES Thread (idThread);
 
-ALTER TABLE UserThread
-ADD CONSTRAINT UserThread_idUser
+ALTER TABLE Thread
+ADD CONSTRAINT Thread_idUser
 FOREIGN KEY(idUser)
-REFERENCES Utilisateur(idUser);
-
-ALTER TABLE UserThread
-ADD CONSTRAINT UserThread_idThread
-FOREIGN KEY(idThread)
-REFERENCES Thread(idThread);
+REFERENCES Utilisateur (idUser);
 
 ALTER TABLE Commentaire 
 ADD CONSTRAINT Commentaire_idUser
 FOREIGN KEY(idUser)
-REFERENCES User(idUser);
+REFERENCES Utilisateur (idUser);
 
 INSERT INTO Utilisateur(idUser, pseudo, cheminAvatar, mdp, ban, admin) VALUES
 (1, "idram", "cheminAvatar", "motdepasse", 0, 0),

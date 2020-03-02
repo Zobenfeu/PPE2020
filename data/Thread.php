@@ -6,6 +6,7 @@ class Thread
     private $sujet;
     private $text;
     private $dateParution;
+    private $idUser;
     
     public function setIdThread($idThread)
     {
@@ -17,8 +18,15 @@ class Thread
         return $idThread;
     }
     
-    
-    public function setSujet($sujet)
+    function getIdUser() {
+        return $this->idUser;
+    }
+
+    function setIdUser($idUser) {
+        $this->idUser = $idUser;
+    }
+
+        public function setSujet($sujet)
     {
         $this->sujet=$sujet;
     }

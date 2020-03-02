@@ -11,25 +11,41 @@ h2
 	font-size: 30px;
 }
 
-.green_banniere
+.green_banniere 
 {
-	display:flex;
-	justify-content: center;
-	align-items: center;
-	background-color: #DFF0D8;
-	height: 40px;
-	width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #DFF0D8;
+    height: 40px;
+    width: 100%;
 }
 
 .container_page 
 {
-	height: 100%;
-	width: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #3CB371;
-	margin-left: 25%;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3CB371;
+    margin-left: 25%;
 }
+
+.bouton_container
+{
+    
+}
+
+.bouton
+{
+    
+}
+
+.profil
+{
+    
+}
+
 
 

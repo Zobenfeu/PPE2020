@@ -23,6 +23,19 @@ class UserManager
         return $user;
     }
     
+    public static function findIdUser($username)
+    {        
+        $bdd= DataBaseLinker::getConnexion();
+        $state = $bdd->prepare("SELECT idUser FROM Utilisateur WHERE pseudo=?");
+        $state->bindParam(1, $username);
+
+        $state->execute();
+        $result=$state->fetchAll();
+        $codeRetour= $result[0][0];
+            
+        return $codeRetour;
+    }
+    
     public static function findAllUser ()
     {
         $tabUser = array();
@@ -58,14 +71,14 @@ class UserManager
         $state->execute();             
     }
     
-    public static function insertUser($user)
+    public static function insertUser($user,$pass)
     {
         $bdd= DataBaseLinker::getConnexion();
         
         $state = $bdd->prepare("INSERT INTO Utilisateur (pseudo, mdp, "
                 . "ban, admin) VALUES (?,?,0,0)");
-        $state->bindParam(1, $user->getPseudo);
-        $state->bindParam(2, $user->getMdp);
+        $state->bindParam(1, $user);
+        $state->bindParam(2, $pass);
         $state->execute();          
     }
     
@@ -82,12 +95,16 @@ class UserManager
     
     public static function testIdentifiants($username, $password)
     {
-        $loginUser = "MatteoJames";
-        $passwordUser = "Brexit2020";
         
         $codeRetour = false;
         
-        if ($username == $loginUser && $password == $passwordUser)
+        $bdd= DataBaseLinker::getConnexion();
+        $state = $bdd->prepare("SELECT mdp FROM Utilisateur WHERE pseudo=?");
+        $state->bindParam(1, $username);
+
+        $state->execute();
+        $result=$state->fetchAll();
+        if ($password == $result[0][0])
         {
             $codeRetour = true;
         }

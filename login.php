@@ -1,9 +1,8 @@
 <?php
-
-    session_name("ppe_session");
-    session_start();
     
-    include("header.php");
+    include("header-footer/header.php");
+    include("dataManager/dataBaseLinker.php");
+    include("dataManager/UserManager.php");
 
 ?>
 
@@ -28,7 +27,7 @@
                                                         <input type="password" id="idPassword" name="password" class="input_password" required>
                                                 </div>
 
-                                                <input type="submit" value="Connexion" class="button_connexion">
+                                                <input type="submit" name="submit" value="Connexion" class="button_connexion">
 
                                     </div>
                     </form>
@@ -38,15 +37,14 @@
 	</div>
 
 <?php
-    //Connexion
-	if (!empty($_POST["username"]) && !empty($_POST["password"]))
+    if (!empty($_POST["username"]) && !empty($_POST["password"]))
 	{   
             $codeRetour = UserManager::testIdentifiants($_POST["username"], $_POST["password"]);
             
             if ($codeRetour == true)
             {
                 $_SESSION["ppe_session"] = $_POST["username"];
-
+                $_SESSION["idUser"]= UserManager::findIdUser($_POST["username"]);
                 header('Location: index.php');
                 exit;
             }
@@ -61,9 +59,9 @@
 	{
                 session_unset();
 		session_destroy();
+                header('Location: index.php');
+                exit;
 	}
-
-    include("footer.php");
-	
+    include("header-footer/footer.php");
 ?>
 

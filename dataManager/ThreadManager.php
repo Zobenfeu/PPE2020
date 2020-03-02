@@ -20,6 +20,7 @@ class ThreadManager
             $thread->setSujet($line["sujet"]);
             $thread->setText($line["text"]);
             $thread->setDate($line["dateParution"]);
+            $thread->setIdUser($line["idUser"]);
         }
         return $thread;
     }
@@ -42,6 +43,7 @@ class ThreadManager
             $thread->setSujet($line["sujet"]);
             $thread->setText($line["text"]);
             $thread->setDate($line["dateParution"]);
+            $thread->setIdUser($line["idUser"]);
 
             $tabThread [] = $thread;
         }
@@ -61,9 +63,10 @@ class ThreadManager
     {
         $bdd= DataBaseLinker::getConnexion();
         
-        $state = $bdd->prepare("INSERT INTO Thread (sujet, text, dateParution) VALUES (?,?,CURDATE())");
+        $state = $bdd->prepare("INSERT INTO Thread (sujet, text, dateParution, idUser) VALUES (?,?,CURDATE(),?)");
         $state->bindParam(1, $thread->getSujet);
         $state->bindParam(2, $thread->getText);
+        $state->bindParam(3, $thread->getIdUser);
         $state->execute();      
     }
     

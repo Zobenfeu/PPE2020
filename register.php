@@ -1,7 +1,8 @@
 <?php
-    session_name("ppe_session");
-    session_start();
-    include("header.php");
+
+    include("header-footer/header.php");
+    include("dataManager/dataBaseLinker.php");
+    include("data/User.php");
     
     /*Connexion a la base de données*/
     $bdd= DataBaseLinker::getConnexion();
@@ -35,30 +36,31 @@
                                                     <p>Répetez votre password</p>
                                                     <input type="password" name="repeatpassword"><br><br>
 
-                                                    <input type="submit" value="Valider" class="button_connexion">
+                                                    <input type="submit" name="submit" value="Valider" class="button_connexion">
 
                                     </div>
                     </form>
                 
 	    </div>
 
-<?php
-    
 
-    $user = new User;
-    $user->setPseudo($_POST['pseudo']);
-    $user->setMdp($_POST['password']);
-    
+<?php
+
     if (isset($_POST['submit']))
     {
-       /* on test si les champ sont bien remplis */
-        if(!empty($_POST['pseudo']) and !empty($_POST['password']) and !empty($_POST['repeatpassword']))
+       /* on test si les champs sont bien remplis */
+        if(!empty($_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['repeatpassword']))
         {
             /* on test si les deux mdp sont bien identique */
             if ($_POST['password']==$_POST['repeatpassword'])
-            {
-                UserManager::insertUser($user);
+            {   
+                $user = new User;
+                $user->setPseudo($_POST['pseudo']);
+                $user->setMdp($_POST['password']);
+                UserManager::insertUser($_POST['pseudo'],$_POST['password']);
                 echo "Vous êtes bien inscrit sur le forum.";
+                header('Location: index.php');
+                exit;
             }
             else 
             {
@@ -70,4 +72,9 @@
             echo "Veuillez saisir tous les champs !";
         }
     }
+   
+?>
+
+<?php
+    include("header-footer/footer.php");
 ?>
