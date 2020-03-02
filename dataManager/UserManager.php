@@ -87,9 +87,9 @@ class UserManager
         $bdd= DataBaseLinker::getConnexion();
         $state = $bdd->prepare("UPDATE Utilisateur SET pseudo = ?, mdp = ?"
                         . " WHERE idUser = ?");
-        $state->bindParam(1, $user->getPseudo);
-        $state->bindParam(2, $user->getMdp);
-        $state->bindParam(3, $user->getidUser);
+        $state->bindParam(1, $user->getPseudo());
+        $state->bindParam(2, $user->getMdp());
+        $state->bindParam(3, $user->getidUser());
         $state->execute();       
     }
     
@@ -104,6 +104,7 @@ class UserManager
 
         $state->execute();
         $result=$state->fetchAll();
+        
         if ($password == $result[0][0])
         {
             $codeRetour = true;

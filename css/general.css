@@ -11,6 +11,12 @@ h2
 	font-size: 30px;
 }
 
+p
+{
+    font-family: sans-serif;
+    color: #0c0a0c;
+}
+
 .green_banniere 
 {
     display: flex;
@@ -30,6 +36,7 @@ h2
     justify-content: center;
     background-color: #3CB371;
     margin-left: 25%;
+    flex-direction: column;
 }
 
 .bouton_container

@@ -1,0 +1,58 @@
+.profil_content
+{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background: mediumaquamarine;
+    width: 95%;
+}
+
+.content
+{
+    justify-content: center;
+    border-style: solid;
+    border-color: #9370DB;
+    background-color: aquamarine;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profil
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.UpdateMdp
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Avatar
+{
+    background: red;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.Pseudo
+{
+    margin-right: 30px;
+    margin-top: 10px;
+}
+
+.updateMdp
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

@@ -3,6 +3,7 @@
     include("header-footer/header.php");
     include("dataManager/dataBaseLinker.php");
     include("dataManager/UserManager.php");
+    include("data/User.php");
 
 ?>
 
@@ -37,31 +38,35 @@
 	</div>
 
 <?php
+
     if (!empty($_POST["username"]) && !empty($_POST["password"]))
-	{   
-            $codeRetour = UserManager::testIdentifiants($_POST["username"], $_POST["password"]);
-            
-            if ($codeRetour == true)
-            {
-                $_SESSION["ppe_session"] = $_POST["username"];
-                $_SESSION["idUser"]= UserManager::findIdUser($_POST["username"]);
-                header('Location: index.php');
-                exit;
-            }
-            else
-            {
-                echo "<br>Identifiant ou mot de passe incorrect.";
-            }
-	}
+    {   
+        $codeRetour = UserManager::testIdentifiants($_POST["username"], $_POST["password"]);
+
+        if ($codeRetour == true)
+        {
+            $_SESSION["ppe_session"] = $_POST["username"];
+            $_SESSION["idUser"]= UserManager::findIdUser($_POST["username"]);
+            header('Location: index.php');
+            exit;
+        }
+        else
+        {
+            echo '<div class="pbCo">';
+            echo "<br>Identifiant ou mot de passe incorrect.";
+            echo '</div>';
+        }
+    }
         
 	//Deconnexion
-	if (!empty($_GET["deco"]) && $_GET["deco"] == true)
-	{
-                session_unset();
-		session_destroy();
-                header('Location: index.php');
-                exit;
-	}
+    if (!empty($_GET["deco"]) && $_GET["deco"] == true)
+    {
+            session_unset();
+            session_destroy();
+            header('Location: index.php');
+            exit;
+    }
+    
     include("header-footer/footer.php");
 ?>
 
