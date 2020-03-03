@@ -49,7 +49,7 @@
     if (isset($_POST['submit']))
     {
        /* on test si les champs sont bien remplis */
-        if(!empty($_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['repeatpassword']))
+        if(!empty($_POST['pseudo']) and !empty($_POST['password']) and !empty($_POST['repeatpassword']))
         {
             /* on test si les deux mdp sont bien identique */
             if ($_POST['password']==$_POST['repeatpassword'])

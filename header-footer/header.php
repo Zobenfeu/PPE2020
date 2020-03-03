@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css" href="css/general.css" media="all"/>
         <link rel="stylesheet" type="text/css" href="css/login.css" media="all"/>
         <link rel="stylesheet" type="text/css" href="css/profil.css" media="all"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css" media="all"/>
         <link rel="icon" type="image/png" href="images/icon.png" />
         <title>ForumPPE</title>      
     </head>

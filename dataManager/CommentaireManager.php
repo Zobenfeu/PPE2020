@@ -64,9 +64,9 @@ class CommentaireManager
         $bdd= DataBaseLinker::getConnexion();
         
         $state = $bdd->prepare("INSERT INTO Commentaire (dateCommentaire, content, idUser, idThread) VALUES (CURDATE(),?,?,?,?)");
-        $state->bindParam(2, $com->getContent);
-        $state->bindParam(3, $com->getIdThread);
-        $state->bindParam(4, $com->getIdUser);
+        $state->bindParam(2, $com->getContent());
+        $state->bindParam(3, $com->getIdThread());
+        $state->bindParam(4, $com->getIdUser());
         $state->execute();  
         
     }
@@ -75,10 +75,10 @@ class CommentaireManager
     {
         $bdd= DataBaseLinker::getConnexion();
         $state = $bdd->prepare("UPDATE Commentaire SET dateCommentaire = CURDATE(), content = ?,idThread = ?  , idUser = ? WHERE idCommentaire = ?");
-        $state->bindParam(1, $com->getContent);
-        $state->bindParam(2, $com->getIdThread);
-        $state->bindParam(3, $com->getIdUser);
-        $state->bindParam(4, $com->getIdCommentaire);
+        $state->bindParam(1, $com->getContent());
+        $state->bindParam(2, $com->getIdThread());
+        $state->bindParam(3, $com->getIdUser());
+        $state->bindParam(4, $com->getIdCommentaire());
         $state->execute();        
     }
     

@@ -1,1 +1,29 @@
+.boutons
+{
+    display: flex;
+    justify-content: space-between;
+    background-color: #e873176e;
+    margin-bottom: auto;
+    margin-top: 35px;
+    width: -webkit-fill-available;
+    height: 50px;
+    align-items: center;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.boutonTop
+{
+    background-color: #cca5a5;
+    padding: 10px;
+    border: solid 2px red;
+    border-radius: 10px;
+}
+
+.b
+{
+    color: blueviolet;
+    font-weight: bold;
+}
 

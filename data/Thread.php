@@ -7,8 +7,17 @@ class Thread
     private $text;
     private $dateParution;
     private $idUser;
+    private $fermer;
     
-    public function setIdThread($idThread)
+    function getFermer() {
+        return $this->fermer;
+    }
+
+    function setFermer($fermer) {
+        $this->fermer = $fermer;
+    }
+
+        public function setIdThread($idThread)
     {
         $this->idThread=$idThread;
     }

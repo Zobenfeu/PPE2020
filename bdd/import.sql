@@ -28,6 +28,7 @@ CREATE TABLE Thread
     sujet VARCHAR(64) NOT NULL,
     text TEXT NOT NULL,
     dateParution DATE,
+    fermer TINYINT,
     idUser INT NOT NULL,
     PRIMARY KEY(idThread)
 );

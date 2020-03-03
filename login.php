@@ -39,7 +39,7 @@
 
 <?php
 
-    if (!empty($_POST["username"]) && !empty($_POST["password"]))
+    if (!empty($_POST["username"]) and !empty($_POST["password"]))
     {   
         $codeRetour = UserManager::testIdentifiants($_POST["username"], $_POST["password"]);
 
@@ -62,7 +62,6 @@
     if (!empty($_GET["deco"]) && $_GET["deco"] == true)
     {
             session_unset();
-            session_destroy();
             header('Location: index.php');
             exit;
     }

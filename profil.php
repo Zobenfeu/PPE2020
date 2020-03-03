@@ -5,7 +5,6 @@
     include("data/User.php");
     include("dataManager/UserManager.php");
     $idUser = UserManager::findIdUser($_SESSION["ppe_session"]);
-    $user = new User();
     $user = UserManager::findUser($idUser);
     
 ?>
@@ -53,10 +52,10 @@ echo $_SESSION["ppe_session"];
 
 <?php 
 
-    if (isset($_POST['submit']))
+    if (!empty($_POST['submit']))
     {
        /* on test si les champs sont bien remplis */
-        if(!empty($_POST['oldPassword']) && !empty($_POST['newPassword']) && !empty($_POST['repeatNewPassword']))
+        if(!empty($_POST['oldPassword']) and !empty($_POST['newPassword']) and !empty($_POST['repeatNewPassword']))
         {
             /* on test si les deux mdp sont bien identique */
             if ($_POST['newPassword']==$_POST['repeatNewPassword'])
@@ -69,6 +68,7 @@ echo $_SESSION["ppe_session"];
             }
             else 
             {
+                echo '</br>';
                 echo "Vérifier d'avoir bien rempli les champs.";
             }   
         }
