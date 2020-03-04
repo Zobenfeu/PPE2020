@@ -24,7 +24,7 @@ class Thread
     
     public function getIdThread()
     {
-        return $idThread;
+        return $this->idThread;
     }
     
     function getIdUser() {
@@ -42,7 +42,7 @@ class Thread
     
     public function getSujet()
     {
-        return $sujet;
+        return $this->sujet;
     }
     
     

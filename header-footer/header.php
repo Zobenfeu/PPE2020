@@ -34,9 +34,9 @@
     else 
     {
         echo '<div class="bouton">';
-        echo '<a href="login.php">Connexion</a>';
-        echo "</div> ";
-        
+            echo '<a href="register.php">Inscription</a>';
+            echo '<a href="login.php">Connexion</a>';
+        echo "</div> ";       
     }
 ?>
 

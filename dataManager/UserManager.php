@@ -82,14 +82,14 @@ class UserManager
         $state->execute();          
     }
     
-    public static function updateUser ($user)
+    public static function updateUser ($pseudo,$mdp,$id)
     {
         $bdd= DataBaseLinker::getConnexion();
         $state = $bdd->prepare("UPDATE Utilisateur SET pseudo = ?, mdp = ?"
                         . " WHERE idUser = ?");
-        $state->bindParam(1, $user->getPseudo());
-        $state->bindParam(2, $user->getMdp());
-        $state->bindParam(3, $user->getidUser());
+        $state->bindParam(1, $pseudo);
+        $state->bindParam(2, $mdp);
+        $state->bindParam(3, $id);
         $state->execute();       
     }
     

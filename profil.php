@@ -61,10 +61,10 @@ echo $_SESSION["ppe_session"];
             if ($_POST['newPassword']==$_POST['repeatNewPassword'])
             {   
                 $user->setMdp($_POST['newPassword']);
-                UserManager::updateUser($user);
-                header('Location: profil.php');
+                UserManager::updateUser($user->getPseudo(), $user->getMdp(), $user->getIdUser());
+
                 echo "Vous venez de changer votre mot de passe.";              
-                exit;
+
             }
             else 
             {

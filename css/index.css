@@ -1,9 +1,20 @@
+input[type=submit]
+{
+    background-color: #cca5a5; /* Green */
+    border: none;
+    text-align: center;
+    font-weight: bold;
+    color: blueviolet;
+    font-family : Times New Roman;
+    font-size: 16px;
+}
+
 .boutons
 {
     display: flex;
     justify-content: space-between;
     background-color: #e873176e;
-    margin-bottom: auto;
+    margin-bottom: 50px;
     margin-top: 35px;
     width: -webkit-fill-available;
     height: 50px;
@@ -11,6 +22,36 @@
     padding: 10px;
     margin-left: 20px;
     margin-right: 20px;
+}
+
+.boutonsNoConnexion
+{
+    display: flex;
+    justify-content: center;
+    background-color: #e873176e;
+    margin-bottom: 50px;
+    margin-top: 35px;
+    width: -webkit-fill-available;
+    height: 50px;
+    align-items: center;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.thread_container
+{
+    background-color: #848484;
+    padding: 35%;
+    border: 1px solid #848484;
+    border-radius: 5px;
+}
+
+.thread
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .boutonTop
@@ -25,5 +66,12 @@
 {
     color: blueviolet;
     font-weight: bold;
+    text-decoration: none;
 }
 
+.formAdmin
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

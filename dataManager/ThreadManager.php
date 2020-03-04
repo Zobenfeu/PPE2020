@@ -19,7 +19,7 @@ class ThreadManager
             $thread->setIdThread($line["idThread"]);
             $thread->setSujet($line["sujet"]);
             $thread->setText($line["text"]);
-            $thread->setDate($line["dateParution"]);
+            $thread->setDateParution($line["dateParution"]);
             $thread->setFermer($line["fermer"]);
             $thread->setIdUser($line["idUser"]);
         }
@@ -32,7 +32,7 @@ class ThreadManager
         
         $bdd = DataBaseLinker::getConnexion(); 
         
-        $state = $bdd->prepare("SELECT * FROM Article");
+        $state = $bdd->prepare("SELECT * FROM Thread");
         
         $state->execute();
         $results = $state->fetchAll();
@@ -43,7 +43,7 @@ class ThreadManager
             $thread->setIdThread($line["idThread"]);
             $thread->setSujet($line["sujet"]);
             $thread->setText($line["text"]);
-            $thread->setDate($line["dateParution"]);
+            $thread->setDateParution($line["dateParution"]);
             $thread->setFermer($line["fermer"]);
             $thread->setIdUser($line["idUser"]);
 
@@ -61,20 +61,21 @@ class ThreadManager
         $state->execute();             
     }
     
-    public static function openOrCloseThread($thread)
+    public static function openOrCloseThread($idThread)
     {
         $bdd= DataBaseLinker::getConnexion();
-        if($thread->getFermer==0)
+        $thread = ThreadManager::findThread($idThread);
+        if($thread->getFermer()==0)
         {
             $state = $bdd->prepare("UPDATE Thread SET fermer = 1 WHERE idThread = ?");
-            $state->bindParam(1, $thread->getIdThread());
+            $state->bindParam(1, $idThread);
             $state->execute();
             $thread->setFermer(1);
         }
-        elseif($thread->getFermer==1)
+        elseif($thread->getFermer()==1)
         {
             $state = $bdd->prepare("UPDATE Thread SET fermer = 0 WHERE idThread = ?");
-            $state->bindParam(1, $thread->getIdThread());
+            $state->bindParam(1, $idThread);
             $state->execute();
             $thread->setFermer(0);
         }

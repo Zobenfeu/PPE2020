@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS MCDPPE;
 CREATE DATABASE MCDPPE;
 USE MCDPPE;
 
@@ -51,3 +52,7 @@ REFERENCES Utilisateur (idUser);
 INSERT INTO Utilisateur(idUser, pseudo, cheminAvatar, mdp, ban, admin) VALUES
 (1, "idram", "cheminAvatar", "motdepasse", 0, 0),
 (2, "cortana", "cheminAvatar", "azerty", 0, 1);
+
+INSERT INTO Thread(idThread, sujet, text, dateParution, fermer, idUser) VALUES
+(1, "CoronaVirus", "Le coronavirus fbuzdiezbzufb", CURDATE(), 0, 1),
+(2, "49.3", "reforme retraite dezjfezfz  gerg egr ", CURDATE(), 0, 2);
