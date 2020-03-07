@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS MCDPPE;
+    DROP DATABASE IF EXISTS MCDPPE;
 CREATE DATABASE MCDPPE;
 USE MCDPPE;
 
@@ -29,7 +29,7 @@ CREATE TABLE Thread
     sujet VARCHAR(64) NOT NULL,
     text TEXT NOT NULL,
     dateParution DATE,
-    fermer TINYINT,
+    fermé TINYINT,
     idUser INT NOT NULL,
     PRIMARY KEY(idThread)
 );
@@ -37,17 +37,17 @@ CREATE TABLE Thread
 ALTER TABLE Commentaire
 ADD CONSTRAINT Commentaire_idThread
 FOREIGN KEY(idThread)
-REFERENCES Thread (idThread);
+REFERENCES Thread(idThread);
 
 ALTER TABLE Thread
 ADD CONSTRAINT Thread_idUser
 FOREIGN KEY(idUser)
-REFERENCES Utilisateur (idUser);
+REFERENCES Utilisateur(idUser);
 
 ALTER TABLE Commentaire 
 ADD CONSTRAINT Commentaire_idUser
 FOREIGN KEY(idUser)
-REFERENCES Utilisateur (idUser);
+REFERENCES Utilisateur(idUser);
 
 INSERT INTO Utilisateur(idUser, pseudo, cheminAvatar, mdp, ban, admin) VALUES
 (1, "idram", "cheminAvatar", "motdepasse", 0, 0),
