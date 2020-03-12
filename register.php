@@ -4,6 +4,7 @@
     include("dataManager/dataBaseLinker.php");
     include("dataManager/UserManager.php");
     include("data/User.php");
+    include("dataManager/UserManager.php");
     
     /*Connexion a la base de données*/
     $bdd= DataBaseLinker::getConnexion();

@@ -93,6 +93,15 @@ class UserManager
         $state->execute();       
     }
     
+    public static function updateAvatar($idUser, $cheminAvatar)
+    {
+        $bdd = DataBaseLinker::getConnexion();
+        $state = $bdd->prepare("UPDATE Utilisateur SET cheminAvatar = ? WHERE idUser = ?");
+        $state->bindParam(1, $idUser);
+        $state->bindParam(2, $cheminAvatar);
+        $state->execute();
+    }
+    
     public static function testIdentifiants($username, $password)
     {
         

@@ -17,7 +17,13 @@
                 <div class="profil">
 
                         <div class="Avatar">
-                            "Avatar"
+                            Avatar
+                            
+                            <select>
+                                <option style="background-image:url(images/avatar1.png);">1</option>
+                                <option style="background-image:url(images/avatar2.jpg);">2</option>
+                                <option style="background-image:url(images/avatar3.jpg);">3</option>
+                            </select>
                         </div>
 
                         <div class="Pseudo">
@@ -33,7 +39,7 @@ echo $_SESSION["ppe_session"];
                     
                     <form method="post" action="profil.php" name="updatePassword" class="updateMdp">
                             
-                            <p>Entrée votre ancien mot de passe</p>
+                            <p>Entrez votre ancien mot de passe</p>
                             <input type="password" name="oldPassword">
                             
                             <p>Tapez votre nouveau mot de passe</p>
@@ -57,26 +63,29 @@ echo $_SESSION["ppe_session"];
        /* on test si les champs sont bien remplis */
         if(!empty($_POST['oldPassword']) and !empty($_POST['newPassword']) and !empty($_POST['repeatNewPassword']))
         {
-            /* on test si les deux mdp sont bien identique */
+            /* on test si les deux mdp sont bien identiques */
             if ($_POST['newPassword']==$_POST['repeatNewPassword'])
             {   
                 $user->setMdp($_POST['newPassword']);
                 UserManager::updateUser($user->getPseudo(), $user->getMdp(), $user->getIdUser());
 
                 echo "Vous venez de changer votre mot de passe.";              
-
             }
             else 
             {
                 echo '</br>';
-                echo "Vérifier d'avoir bien rempli les champs.";
+                echo "Vérifiez d'avoir bien rempli les champs.";
             }   
-        }
+        }     
         else 
         {
             echo "Veuillez saisir tous les champs !";
         }
     }
+    
+    
+    
+    
     
 include("header-footer/footer.php");
 ?>
