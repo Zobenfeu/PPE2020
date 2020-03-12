@@ -53,9 +53,8 @@ class Thread
     
     public function getText()
     {
-        return $text;
+        return $this->text;
     }
-    
     
     public function setDateParution($dateParution)
     {

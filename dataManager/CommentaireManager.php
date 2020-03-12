@@ -23,6 +23,7 @@ class CommentaireManager
         }
         return $com;
     }
+    
 
     public static function findAllCommentaire ()
     {
@@ -32,6 +33,31 @@ class CommentaireManager
 
         $state=$bddCommentaire->prepare("SELECT * FROM Commentaire");
 
+        $state->execute();
+        $resultats = $state->fetchAll();
+
+        foreach($resultats as $lineResult)
+        {
+            $com = new Commentaire();
+            $com->setIdCommentaire($lineResult["idCommentaire"]);
+            $com->setDateCommentaire($lineResult["dateCommentaire"]);
+            $com->setContent($lineResult["content"]);
+            $com->setIdUser($lineResult["idUser"]);
+            $com->setIdThread($lineResult["idThread"]);
+
+            $tabCom [] = $com;
+        }
+        return $tabCom;
+    }
+    
+    public static function findAllCommentaireWithIdThread ($idThread)
+    {
+        $tabCom = array();
+
+        $bddCommentaire = DataBaseLinker::getConnexion();
+
+        $state=$bddCommentaire->prepare("SELECT * FROM Commentaire WHERE idThread=?");
+        $state->bindParam(1, $idThread);
         $state->execute();
         $resultats = $state->fetchAll();
 

@@ -26,6 +26,19 @@ class ThreadManager
         return $thread;
     }
     
+    public static function findIdThread($titre)
+    {        
+        $bdd= DataBaseLinker::getConnexion();
+        $state = $bdd->prepare("SELECT idThread FROM Thread WHERE sujet=?");
+        $state->bindParam(1, $titre);
+
+        $state->execute();
+        $result=$state->fetchAll();
+        $codeRetour= $result[0][0];
+            
+        return $codeRetour;
+    }
+    
     public static function findAllThread ()
     {
         $tabThread = Array();

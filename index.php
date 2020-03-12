@@ -5,6 +5,7 @@
     include("dataManager/UserManager.php");
     include("data/Thread.php");
     include("dataManager/ThreadManager.php");
+    
     if(isset($_SESSION["ppe_session"]))
     {
         $id = UserManager::findIdUser($_SESSION["ppe_session"]);
@@ -48,6 +49,7 @@
                 //Récuperation infos threads
                 $lanceurDuThread = UserManager::findUser($line->getIdUser());
                 $threadActuel = ThreadManager::findThread($line->getIdThread());
+                $idThread = ThreadManager::findIdThread($threadActuel->getSujet());
                 
                 //Verification si l'admin a coché des cases pour supprimer/clore/réouvrir un thread
                 if(!empty($_POST["openclose"]))
@@ -75,27 +77,27 @@
                 <div class="thread">';
                     echo'<div class="avatarUtilisateur">avatar</div>';
                     echo'<div class="pseudoLanceur">'.$lanceurDuThread->getPseudo().'</div>';
-                    echo'<div class="titreThread"><a href="sujet.php">'.$threadActuel->getSujet().'</a></div>';
+                    echo'<div class="titreThread"><a href="displayThread.php?idthread='.$idThread.'&idUser='.$id.'">'.$threadActuel->getSujet().'</a></div>';
                 echo'</div>';   
             }
             echo '</form>';
     }
     
     if($id!=NULL)
-        {
-            echo '<div class="boutons">';
-            echo '<div class="boutonTop"><a class="b" href="nouveauThread.php">Nouveau Sujet</a></div>';
-            echo'<div class="boutonTop"><a class="b" href="gerezVosSujet.php">Gerez vos sujets</a></div>';
-            echo '<div class="boutonTop"><a class="b" href="index.php">Actualisez</a></div>';
-            echo '</div>';
-        }
-        //Verifie si c'est un admin
-        else
-        {
-            echo '<div class="boutonsNoConnexion">';
-            echo '<div class="boutonTop"><a class="b" href="index.php">Actualisez</a></div>';
-            echo'</div>';
-        }
+    {
+        echo '<div class="boutons">';
+        echo '<div class="boutonTop"><a class="b" href="nouveauThread.php">Nouveau Sujet</a></div>';
+        echo'<div class="boutonTop"><a class="b" href="gerezVosSujet.php">Gerez vos sujets</a></div>';
+        echo '<div class="boutonTop"><a class="b" href="index.php">Actualisez</a></div>';
+        echo '</div>';
+    }
+    //Verifie si c'est un admin
+    else
+    {
+        echo '<div class="boutonsNoConnexion">';
+        echo '<div class="boutonTop"><a class="b" href="index.php">Actualisez</a></div>';
+        echo'</div>';
+    }
 
     
     echo'<div class="thread_container">';
@@ -104,10 +106,11 @@
     {
         $lanceurDuThread = UserManager::findUser($line->getIdUser());
         $threadActuel = ThreadManager::findThread($line->getIdThread());
+        $idThread = ThreadManager::findIdThread($threadActuel->getSujet());
         echo'<div class="thread">';
             echo'<div class="avatarUtilisateur">avatar</div>';
             echo'<div class="pseudoLanceur">'.$lanceurDuThread->getPseudo().'</div>';
-            echo'<div class="titreThread"><a href="sujet.php">'.$threadActuel->getSujet().'</a></div>';
+            echo'<div class="titreThread"><a href="displayThread.php?idthread='.$idThread.'">'.$threadActuel->getSujet().'</a></div>';
         echo'</div>';
     }     
 echo'</div>';//ThreadContainer
