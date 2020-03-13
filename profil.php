@@ -17,13 +17,32 @@
                 <div class="profil">
 
                         <div class="Avatar">
-                            Avatar
                             
-                            <select>
-                                <option style="background-image:url(images/avatar1.png);">1</option>
-                                <option style="background-image:url(images/avatar2.jpg);">2</option>
-                                <option style="background-image:url(images/avatar3.jpg);">3</option>
+                            <select name="$avatar">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
                             </select>
+                            
+<?php
+    
+        if($avatar == 1)
+        {
+            echo '<img src="images/avatar1.jpg">';
+        }
+        else if($avatar == 2)
+        {
+            echo '<img src="images/avatar2.jpg">';
+        }
+        else
+        {
+            echo '<img src="images/avatar3.jpg">'; 
+        }
+    
+    
+?>                        
+                        
+                        
                         </div>
 
                         <div class="Pseudo">
@@ -83,7 +102,7 @@ echo $_SESSION["ppe_session"];
         }
     }
     
-    
+   
     
     
     

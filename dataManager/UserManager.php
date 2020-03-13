@@ -75,21 +75,20 @@ class UserManager
     {
         $bdd= DataBaseLinker::getConnexion();
         
-        $state = $bdd->prepare("INSERT INTO Utilisateur (pseudo, mdp, "
-                . "ban, admin) VALUES (?,?,0,0)");
+        $state = $bdd->prepare("INSERT INTO Utilisateur (pseudo, mdp, avatar, ban, admin) VALUES (?,?,1,0,0)");
         $state->bindParam(1, $user);
         $state->bindParam(2, $pass);
         $state->execute();          
     }
     
-    public static function updateUser ($pseudo,$mdp,$id)
+    public static function updateUser ($pseudo, $mdp, $avatar, $id)
     {
         $bdd= DataBaseLinker::getConnexion();
-        $state = $bdd->prepare("UPDATE Utilisateur SET pseudo = ?, mdp = ?"
-                        . " WHERE idUser = ?");
+        $state = $bdd->prepare("UPDATE Utilisateur SET pseudo = ?, mdp = ?, avatar = ? WHERE idUser = ?");
         $state->bindParam(1, $pseudo);
         $state->bindParam(2, $mdp);
-        $state->bindParam(3, $id);
+        $state->bindParam(3, $avatar);
+        $state->bindParam(4, $id);
         $state->execute();       
     }
     
