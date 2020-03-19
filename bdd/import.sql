@@ -56,3 +56,7 @@ INSERT INTO Utilisateur(idUser, pseudo, cheminAvatar, mdp, ban, admin) VALUES
 INSERT INTO Thread(idThread, sujet, text, dateParution, fermer, idUser) VALUES
 (1, "CoronaVirus", "Le coronavirus fbuzdiezbzufb", CURDATE(), 0, 1),
 (2, "49.3", "reforme retraite dezjfezfz  gerg egr ", CURDATE(), 0, 2);
+
+INSERT INTO Commentaire(idCommentaire, content, dateCommentaire, idUser, idThread) VALUES
+(1, "Oh c la panique", CURDATE(), 1, 1),
+(2, "Tout il faudrait tout oublier", CURDATE(), 2, 2);

@@ -89,10 +89,10 @@ class CommentaireManager
     {
         $bdd= DataBaseLinker::getConnexion();
         
-        $state = $bdd->prepare("INSERT INTO Commentaire (dateCommentaire, content, idUser, idThread) VALUES (CURDATE(),?,?,?,?)");
-        $state->bindParam(2, $com->getContent());
+        $state = $bdd->prepare("INSERT INTO Commentaire (dateCommentaire, content, idUser, idThread) VALUES (CURDATE(),?,?,?)");
+        $state->bindParam(1, $com->getContent());
+        $state->bindParam(2, $com->getIdUser());
         $state->bindParam(3, $com->getIdThread());
-        $state->bindParam(4, $com->getIdUser());
         $state->execute();  
         
     }

@@ -1,21 +1,21 @@
 <?php
 
 class DataBaseLinker
-	{
-		private static $_url = "mysql:host=localhost;dbname=mcdppe;charset=utf8";
-		private static $_user = "root";
-		private static $_password = "root";
-		private static $_stockConnexionPDO;
+{
+        private static $_url = "mysql:host=localhost;dbname=mcdppe;charset=utf8";
+        private static $_user = "root";
+        private static $_password = "root";
+        private static $_stockConnexionPDO;
 
-		public static function getConnexion()
-                {
+        public static function getConnexion()
+        {
 
-                    if(DataBaseLinker::$_stockConnexionPDO == null)
-                    {
-                        DataBaseLinker::$_stockConnexionPDO = new PDO(DataBaseLinker::$_url,DataBaseLinker::$_user,DataBaseLinker::$_password);
-                    }
+            if(DataBaseLinker::$_stockConnexionPDO == null)
+            {
+                DataBaseLinker::$_stockConnexionPDO = new PDO(DataBaseLinker::$_url,DataBaseLinker::$_user,DataBaseLinker::$_password);
+            }
 
-                    return DataBaseLinker::$_stockConnexionPDO;
-                }
-	}
+            return DataBaseLinker::$_stockConnexionPDO;
+        }
+}
 ?>

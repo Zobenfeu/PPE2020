@@ -49,7 +49,7 @@
                 //Récuperation infos threads
                 $lanceurDuThread = UserManager::findUser($line->getIdUser());
                 $threadActuel = ThreadManager::findThread($line->getIdThread());
-                $idThread = ThreadManager::findIdThread($threadActuel->getSujet());
+                $idThread = $line->getIdThread();
                 
                 //Verification si l'admin a coché des cases pour supprimer/clore/réouvrir un thread
                 if(!empty($_POST["openclose"]))
@@ -106,14 +106,14 @@
     {
         $lanceurDuThread = UserManager::findUser($line->getIdUser());
         $threadActuel = ThreadManager::findThread($line->getIdThread());
-        $idThread = ThreadManager::findIdThread($threadActuel->getSujet());
+        $idThread = $line->getIdThread();
         echo'<div class="thread">';
             echo'<div class="avatarUtilisateur">avatar</div>';
             echo'<div class="pseudoLanceur">'.$lanceurDuThread->getPseudo().'</div>';
             echo'<div class="titreThread"><a href="displayThread.php?idthread='.$idThread.'">'.$threadActuel->getSujet().'</a></div>';
         echo'</div>';
     }     
-echo'</div>';//ThreadContainer
+    echo'</div>';//ThreadContainer
             
     
 ?>

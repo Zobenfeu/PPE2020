@@ -63,7 +63,7 @@ class Thread
     
     public function getDateParution()
     {
-        return $dateParution;
+        return $this->dateParution;
     }
     
 }
